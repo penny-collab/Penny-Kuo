@@ -61,5 +61,5 @@ export const SCHEDULE: ScheduleItem[] = [
   { time: '19:00 – 19:30', title: '提案一：波波性別資料解密', description: '戳氣球開票儀式、獲勝陣營刮刮樂' },
   { time: '19:30 – 20:00', title: '提案二：重量預測演算法競賽', description: '演算法競猜、頒發精準預測大獎' },
   { time: '20:00 – 20:30', title: '提案三：孕期事件回授測試', description: 'Kahoot 懷孕日常問答大賽' },
-  { time: '20:30 – 21:00', title: '拍照', description: '全體委員會合影留念' },
+  { time: '20:30 – 21:00', title: '拍照', description: '發放本日新聞稿、全體委員會合影留念' },
 ];

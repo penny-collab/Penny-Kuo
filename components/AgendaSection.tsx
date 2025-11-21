@@ -15,7 +15,8 @@ export const AgendaSection: React.FC = () => {
             </div>
             <p className="text-center text-gray-600 font-medium leading-relaxed max-w-2xl mx-auto">
                 本次家庭幸福法案結合了波波爸爸媽媽的職業，<br className="hidden md:block" />
-                我們將從工程數據解密，讓大家一起完成這場公民投票法案！
+                我們將從工程數據解密，透過公民投票記者會<br className="hidden md:block" />
+                讓大家一起完成這場公民投票法案！
             </p>
         </div>
         
