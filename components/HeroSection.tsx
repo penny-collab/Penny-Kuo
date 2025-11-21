@@ -133,9 +133,9 @@ export const HeroSection: React.FC = () => {
              <div className="relative w-72 h-72 md:w-96 md:h-96 z-10 mt-8 md:mt-0">
                 <div className="absolute inset-0 bg-white rounded-[45%_55%_70%_30%/40%_60%_60%_40%] shadow-[0_20px_60px_rgba(0,0,0,0.2)] transform rotate-6 overflow-hidden border-[8px] border-white group-hover:rotate-3 transition-all duration-700">
                     <img 
-                      src="./lucas_penny_ultrasound.jpg" 
+                      src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=800&auto=format&fit=crop" 
                       alt="Lucas & Penny Ultrasound" 
-                      className="w-full h-full object-cover transform scale-105"
+                      className="w-full h-full object-cover transform scale-110"
                     />
                     <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
                         <p className="font-serif font-bold text-poster-pink text-sm">Lucas & Penny</p>

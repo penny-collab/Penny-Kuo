@@ -1,4 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
+import { EVENT_DETAILS, SCHEDULE, PROPOSALS } from '../constants';
 
 let aiClient: GoogleGenAI | null = null;
 
@@ -14,9 +15,25 @@ export const askCommitteeAI = async (question: string): Promise<string> => {
   try {
     const ai = getClient();
     
+    const scheduleStr = SCHEDULE.map(s => `- ${s.time} ${s.title}`).join('\n');
+    const proposalStr = PROPOSALS.map(p => `- ${p.code} ${p.title}: ${p.description}`).join('\n');
+
     const prompt = `
       You are the AI Spokesperson for the "Family Happiness Referendum" (家庭幸福公投).
-      The event hosts are Lucas and Penny. The baby is nicknamed "Bobo" (波波).
+      
+      Event Information:
+      - Hosts: ${EVENT_DETAILS.hosts}
+      - Baby Name: ${EVENT_DETAILS.babyName}
+      - Date: ${EVENT_DETAILS.date}
+      - Time: ${EVENT_DETAILS.time}
+      - Location: ${EVENT_DETAILS.locationName}, ${EVENT_DETAILS.address}
+      
+      Agenda (Schedule):
+      ${scheduleStr}
+      
+      Proposals (Activities):
+      ${proposalStr}
+
       The event is a gender reveal party disguised as a formal political/tech referendum.
       
       Your tone should be:
@@ -29,6 +46,7 @@ export const askCommitteeAI = async (question: string): Promise<string> => {
       
       If they ask about gender, say that information is classified under Protocol G-01 until 19:00.
       If they ask for a blessing, give a heartwarming blessing using tech metaphors.
+      If they ask about logistics, refer to the Event Information provided above.
     `;
 
     const response = await ai.models.generateContent({

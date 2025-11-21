@@ -46,7 +46,7 @@ export const CommitteeAI: React.FC = () => {
                     </div>
                 ) : (
                     <div className="text-center text-gray-400 py-4">
-                        <p className="text-sm mb-2">我有關於法案的所有內幕...</p>
+                        <p className="text-sm mb-2">關於這次公投的所有問題，都可以問我</p>
                         <div className="flex flex-wrap justify-center gap-2">
                             <button onClick={() => setQuery("你是誰？")} className="text-xs bg-white px-3 py-1 rounded-full border hover:border-poster-blue hover:text-poster-blue transition-colors">你是誰？</button>
                             <button onClick={() => setQuery("可以給我一個祝福嗎？")} className="text-xs bg-white px-3 py-1 rounded-full border hover:border-poster-pink hover:text-poster-pink transition-colors">給波波祝福</button>
