@@ -17,5 +17,6 @@ export interface Proposal {
   code: string;
   title: string;
   description: string;
+  prize?: string;
   icon: React.ComponentType<any>;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PROPOSALS, SCHEDULE } from '../constants';
-import { Clock } from 'lucide-react';
+import { Clock, Gift } from 'lucide-react';
 
 export const AgendaSection: React.FC = () => {
   return (
@@ -23,13 +23,13 @@ export const AgendaSection: React.FC = () => {
           {PROPOSALS.map((item, index) => {
             // Stronger, poster-like coloring
             const theme = index === 0 
-                ? { border: 'border-poster-blue', text: 'text-poster-blue', bg: 'bg-blue-50', iconBg: 'bg-blue-100' }
+                ? { border: 'border-poster-blue', text: 'text-poster-blue', bg: 'bg-blue-50', iconBg: 'bg-blue-100', prizeBg: 'bg-blue-50 text-blue-700' }
                 : index === 1 
-                ? { border: 'border-poster-pink', text: 'text-poster-pink', bg: 'bg-pink-50', iconBg: 'bg-pink-100' }
-                : { border: 'border-poster-yellow', text: 'text-yellow-600', bg: 'bg-yellow-50', iconBg: 'bg-yellow-100' };
+                ? { border: 'border-poster-pink', text: 'text-poster-pink', bg: 'bg-pink-50', iconBg: 'bg-pink-100', prizeBg: 'bg-pink-50 text-pink-700' }
+                : { border: 'border-poster-yellow', text: 'text-yellow-600', bg: 'bg-yellow-50', iconBg: 'bg-yellow-100', prizeBg: 'bg-yellow-50 text-yellow-800' };
             
             return (
-            <div key={item.id} className={`relative group p-6 rounded-[2rem] border-[3px] ${theme.border} bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] overflow-hidden`}>
+            <div key={item.id} className={`flex flex-col relative group p-6 rounded-[2rem] border-[3px] ${theme.border} bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] overflow-hidden`}>
                 {/* Decorative corner blob */}
                 <div className={`absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-20 ${theme.bg} scale-150`}></div>
 
@@ -40,13 +40,23 @@ export const AgendaSection: React.FC = () => {
                   <span className="text-4xl font-black text-gray-100 select-none absolute top-0 right-0 -mt-2 -mr-2">0{item.id}</span>
                 </div>
                 
-                <div className="relative space-y-3">
+                <div className="relative space-y-3 flex-1">
                     <span className={`text-[10px] font-black tracking-wider uppercase ${theme.bg} ${theme.text} px-2 py-1 rounded-md inline-block`}>
                         {item.code}
                     </span>
                     <h3 className="text-xl font-bold text-gray-800 font-serif leading-tight">{item.title}</h3>
                     <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.description}</p>
                 </div>
+
+                {/* Prize Section */}
+                {item.prize && (
+                    <div className={`mt-6 pt-4 border-t border-gray-100`}>
+                        <div className={`flex items-start gap-2 p-3 rounded-lg ${theme.prizeBg}`}>
+                            <Gift className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                            <span className="text-xs font-bold leading-snug">{item.prize}</span>
+                        </div>
+                    </div>
+                )}
             </div>
           )})}
         </div>
@@ -71,7 +81,7 @@ export const AgendaSection: React.FC = () => {
                     <div key={index} className="flex group items-start relative py-4">
                         {/* Time Pill */}
                         <div className="w-20 md:w-28 flex-shrink-0 text-right pr-6 md:pr-8 pt-1">
-                            <span className="inline-block text-sm font-black font-mono text-gray-400 group-hover:text-poster-blue transition-colors">
+                            <span className="inline-block text-sm font-black font-mono text-gray-400 group-hover/item:text-poster-blue transition-colors">
                                 {item.time.split('–')[0].trim()}
                             </span>
                             <br />

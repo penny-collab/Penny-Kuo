@@ -1,5 +1,5 @@
 import React from 'react';
-import { Vote, Sparkles, MapPin, Clock, Info } from 'lucide-react';
+import { Vote, Sparkles, MapPin, Clock, Info, CalendarPlus, ExternalLink } from 'lucide-react';
 import { EVENT_DETAILS } from '../constants';
 
 export const HeroSection: React.FC = () => {
@@ -44,32 +44,57 @@ export const HeroSection: React.FC = () => {
                   公投資訊：
                </h2>
                <ul className="space-y-5">
-                  {/* Time */}
-                  <li className="flex items-center gap-4 group/item">
-                     <div className="w-12 h-12 rounded-full bg-white text-poster-blue border-4 border-white/30 flex items-center justify-center font-black text-xl shadow-lg shrink-0 group-hover/item:scale-110 transition-transform">
-                        <Clock className="w-6 h-6" />
-                     </div>
-                     <div className="flex flex-col">
-                        <span className="text-white/80 text-xs font-bold tracking-wider uppercase mb-1">時間 Time</span>
-                        <span className="text-white text-xl font-bold tracking-wide drop-shadow-md leading-none">
-                            {EVENT_DETAILS.date} {EVENT_DETAILS.time}
-                        </span>
-                     </div>
+                  {/* Time - Clickable for Calendar */}
+                  <li className="group/item">
+                     <a 
+                       href={EVENT_DETAILS.googleCalendarUrl} 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="flex items-center gap-4 hover:opacity-90 transition-opacity cursor-pointer"
+                       title="點擊加入行事曆"
+                     >
+                         <div className="w-12 h-12 rounded-full bg-white text-poster-blue border-4 border-white/30 flex items-center justify-center font-black text-xl shadow-lg shrink-0 group-hover/item:scale-110 transition-transform relative">
+                            <Clock className="w-6 h-6 group-hover/item:hidden" />
+                            <CalendarPlus className="w-6 h-6 hidden group-hover/item:block" />
+                         </div>
+                         <div className="flex flex-col">
+                            <span className="text-white/80 text-xs font-bold tracking-wider uppercase mb-1 flex items-center gap-1">
+                                時間 Time 
+                                <CalendarPlus className="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                            </span>
+                            <span className="text-white text-xl font-bold tracking-wide drop-shadow-md leading-none border-b border-transparent group-hover/item:border-white/50 transition-colors">
+                                {EVENT_DETAILS.date} {EVENT_DETAILS.time}
+                            </span>
+                         </div>
+                     </a>
                   </li>
-                  {/* Location */}
-                  <li className="flex items-center gap-4 group/item">
-                     <div className="w-12 h-12 rounded-full bg-white text-poster-blue border-4 border-white/30 flex items-center justify-center font-black text-xl shadow-lg shrink-0 group-hover/item:scale-110 transition-transform">
-                        <MapPin className="w-6 h-6" />
-                     </div>
-                     <div className="flex flex-col">
-                        <span className="text-white/80 text-xs font-bold tracking-wider uppercase mb-1">地點 Location</span>
-                        <span className="text-white text-lg font-bold tracking-wide drop-shadow-md leading-tight">
-                            {EVENT_DETAILS.locationName}
-                        </span>
-                        <span className="text-white/90 text-sm font-medium mt-1">
-                            {EVENT_DETAILS.address}
-                        </span>
-                     </div>
+
+                  {/* Location - Clickable for Google Maps */}
+                  <li className="group/item">
+                     <a 
+                        href={EVENT_DETAILS.mapsUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 hover:opacity-90 transition-opacity cursor-pointer"
+                        title="點擊開啟 Google Maps"
+                     >
+                         <div className="w-12 h-12 rounded-full bg-white text-poster-blue border-4 border-white/30 flex items-center justify-center font-black text-xl shadow-lg shrink-0 group-hover/item:scale-110 transition-transform">
+                            <MapPin className="w-6 h-6 group-hover/item:hidden" />
+                            <ExternalLink className="w-6 h-6 hidden group-hover/item:block" />
+                         </div>
+                         <div className="flex flex-col">
+                            <span className="text-white/80 text-xs font-bold tracking-wider uppercase mb-1 flex items-center gap-1">
+                                地點 Location
+                                <ExternalLink className="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                            </span>
+                            <span className="text-white text-lg font-bold tracking-wide drop-shadow-md leading-tight border-b border-transparent group-hover/item:border-white/50 transition-colors">
+                                {EVENT_DETAILS.locationName}
+                            </span>
+                            <span className="text-white/90 text-sm font-medium mt-1">
+                                {EVENT_DETAILS.address}
+                            </span>
+                         </div>
+                     </a>
                   </li>
                </ul>
             </div>
@@ -108,9 +133,9 @@ export const HeroSection: React.FC = () => {
              <div className="relative w-72 h-72 md:w-96 md:h-96 z-10 mt-8 md:mt-0">
                 <div className="absolute inset-0 bg-white rounded-[45%_55%_70%_30%/40%_60%_60%_40%] shadow-[0_20px_60px_rgba(0,0,0,0.2)] transform rotate-6 overflow-hidden border-[8px] border-white group-hover:rotate-3 transition-all duration-700">
                     <img 
-                      src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=800&auto=format&fit=crop" 
+                      src="./lucas_penny_ultrasound.jpg" 
                       alt="Lucas & Penny Ultrasound" 
-                      className="w-full h-full object-cover transform scale-110"
+                      className="w-full h-full object-cover transform scale-105"
                     />
                     <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
                         <p className="font-serif font-bold text-poster-pink text-sm">Lucas & Penny</p>
@@ -126,15 +151,15 @@ export const HeroSection: React.FC = () => {
 
         {/* Info Footer Strip */}
         <div className="absolute bottom-0 left-0 w-full bg-black/10 backdrop-blur-sm p-3 md:p-4 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-8 text-white text-xs md:text-sm font-medium z-20">
-           <div className="flex items-center gap-2">
+           <a href={EVENT_DETAILS.mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-poster-yellow transition-colors">
              <MapPin className="w-4 h-4" />
              <span>{EVENT_DETAILS.locationName}</span>
-           </div>
+           </a>
            <div className="hidden md:block opacity-40">|</div>
-           <div className="flex items-center gap-2 opacity-90">
+           <a href={EVENT_DETAILS.mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 opacity-90 hover:opacity-100 hover:text-poster-yellow transition-colors">
              <Info className="w-4 h-4" />
              <span>{EVENT_DETAILS.address}</span>
-           </div>
+           </a>
         </div>
 
       </div>
